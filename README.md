@@ -50,6 +50,16 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## List of routes:
+
+| Route  | HTTP | Headers(s) | Body | Description         |
+| ------ | ---- | ---------- | ---- | ------------------- |
+| http://localhost:3000/auth/v1/register   | POST  | None    | {username:string, fullName:string, email:string, password:string} | register user
+| http://localhost:3000/auth/v1/login   | POST  | None    | {username:string, password:string} | login to get token user
+| http://localhost:3000/users/v1   | GET  | None     | none | find all user
+| http://localhost:3000/users/v1/:id  | GET  | None     | none | find user by id
+| http://localhost:3000/users/v1/:id  | PUT  | None     | {username:string, password:string}, status:enum('active', 'banned', 'suspended') | update user by id
+| http://localhost:3000/protected  | GET  | Bearer Token     | NONE | example protected route
 
 ## Generate module, controller, service*
 

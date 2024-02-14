@@ -6,7 +6,8 @@ import { User } from 'src/users/entities/user.entity';
 import { hash } from 'bcryptjs';
 import { UsersService } from 'src/users/users.service';
 
-@Controller('auth')
+const version = 'v1';
+@Controller(`auth/${version}`)
 export class AuthController {
   constructor(
     private readonly authService: AuthService,

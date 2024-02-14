@@ -1,10 +1,12 @@
-import { Controller, Get, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Body, Param, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { hash } from 'bcryptjs';
 
-@Controller('users')
+const version = 'v1';
+
+@Controller(`users/${version}`)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -43,13 +45,13 @@ export class UsersController {
   }
 
   // # Delete user
-  @Delete(':id')
-  async delete(@Param('id') id: number): Promise<void> {
-    const user = await this.usersService.findById(id);
-    if (!user) {
-      throw new Error('User not found');
-    }
+  // @Delete(':id')
+  // async delete(@Param('id') id: number): Promise<void> {
+  //   const user = await this.usersService.findById(id);
+  //   if (!user) {
+  //     throw new Error('User not found');
+  //   }
 
-    return this.usersService.delete(id);
-  }
+  //   return this.usersService.delete(id);
+  // }
 }
