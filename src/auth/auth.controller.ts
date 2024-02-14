@@ -18,6 +18,8 @@ export class AuthController {
   async create(@Body() user: CreateUserDto): Promise<User> {
     const newUser = {
       ...user,
+      first_name: user.fullName.split(' ')[0],
+      last_name: user?.fullName?.split(' ')[1] || null,
       password: await hash(user.password + process.env.PASSWORD_SECRET, 10),
     };
     return await this.usersService.create(newUser);
