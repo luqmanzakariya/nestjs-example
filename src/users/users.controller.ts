@@ -34,7 +34,7 @@ export class UsersController {
     if (user.password) {
       const updatedPassword = {
         ...user,
-        password: await hash(user.password + 'SECRET', 10),
+        password: await hash(user.password + process.env.PASSWORD_SECRET, 10),
       };
       return this.usersService.update(id, updatedPassword);
     }

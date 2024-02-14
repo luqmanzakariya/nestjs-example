@@ -18,7 +18,7 @@ export class AuthController {
   async create(@Body() user: CreateUserDto): Promise<User> {
     const newUser = {
       ...user,
-      password: await hash(user.password + 'SECRET', 10),
+      password: await hash(user.password + process.env.PASSWORD_SECRET, 10),
     };
     return await this.usersService.create(newUser);
   }
