@@ -2,7 +2,7 @@ import { Controller, Request, Body, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
-import { User } from 'src/users/user.entity';
+import { User } from 'src/users/entities/user.entity';
 import { hash } from 'bcryptjs';
 import { UsersService } from 'src/users/users.service';
 

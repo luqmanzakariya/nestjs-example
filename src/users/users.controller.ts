@@ -1,6 +1,6 @@
 import { Controller, Get, Body, Param, Delete, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './user.entity';
+import { User } from './entities/user.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { hash } from 'bcryptjs';
 
