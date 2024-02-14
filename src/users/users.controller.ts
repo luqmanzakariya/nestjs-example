@@ -11,6 +11,7 @@ import { UsersService } from './users.service';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { hash } from 'bcryptjs';
 
 @Controller('users')
 export class UsersController {
@@ -36,7 +37,11 @@ export class UsersController {
   // # Create user
   @Post()
   async create(@Body() user: CreateUserDto): Promise<User> {
-    return await this.usersService.create(user);
+    const newUser = {
+      ...user,
+      password: await hash(user.password + 'SECRET', 10),
+    };
+    return await this.usersService.create(newUser);
   }
 
   // # Update user
@@ -45,6 +50,14 @@ export class UsersController {
     @Param('id') id: number,
     @Body() user: UpdateUserDto,
   ): Promise<User> {
+    if (user.password) {
+      const updatedPassword = {
+        ...user,
+        password: await hash(user.password + 'SECRET', 10),
+      };
+      return this.usersService.update(id, updatedPassword);
+    }
+
     return this.usersService.update(id, user);
   }
 
