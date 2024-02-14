@@ -4,11 +4,11 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    UsersModule,
     TypeOrmModule.forRoot({
       type: process.env.DB_TYPE as any,
       host: process.env.PG_HOST,
@@ -18,7 +18,10 @@ import { ConfigModule } from '@nestjs/config';
       database: process.env.PG_DB,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      logging: true,
     }),
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
