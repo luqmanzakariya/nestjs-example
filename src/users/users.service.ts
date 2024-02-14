@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Status } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -15,6 +16,13 @@ export class UsersService {
   // # Get all users
   async findAll(): Promise<User[]> {
     return await this.usersRepository.find();
+  }
+
+  // # Get all active users
+  async findAllActiveUser(): Promise<User[]> {
+    return await this.usersRepository.find({
+      where: { status: Status.ACTIVE },
+    });
   }
 
   // # Get user by id

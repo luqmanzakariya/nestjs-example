@@ -12,6 +12,11 @@ export class UsersController {
 
   // # Get all users
   @Get()
+  async findAllActive(): Promise<User[]> {
+    return await this.usersService.findAllActiveUser();
+  }
+
+  @Get('all')
   async findAll(): Promise<User[]> {
     return await this.usersService.findAll();
   }

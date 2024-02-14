@@ -7,9 +7,16 @@ import { LocalStrategy } from './local.strategy';
 import { JwtStragegy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
 import { jwtConfig } from 'src/config/jwt.config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Position } from './entities/positions.entity';
 
 @Module({
-  imports: [UsersModule, PassportModule, JwtModule.registerAsync(jwtConfig)],
+  imports: [
+    UsersModule,
+    PassportModule,
+    JwtModule.registerAsync(jwtConfig),
+    TypeOrmModule.forFeature([Position]),
+  ],
   providers: [AuthService, LocalStrategy, JwtStragegy],
   exports: [AuthService],
   controllers: [AuthController],
