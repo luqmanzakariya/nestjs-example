@@ -1,15 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Put,
-} from '@nestjs/common';
+import { Controller, Get, Body, Param, Delete, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { hash } from 'bcryptjs';
 
@@ -32,16 +23,6 @@ export class UsersController {
     } else {
       return user;
     }
-  }
-
-  // # Create user
-  @Post()
-  async create(@Body() user: CreateUserDto): Promise<User> {
-    const newUser = {
-      ...user,
-      password: await hash(user.password + 'SECRET', 10),
-    };
-    return await this.usersService.create(newUser);
   }
 
   // # Update user
