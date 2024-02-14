@@ -57,13 +57,16 @@ $ npm run start:prod
 *Requires nestjs CLI
 
 # generate module
-$ nest g module users
+$ nest g module <module_name>
 
 # generate controller
-$ nest g controller users
+$ nest g controller <controller_name>
 
 # generate service
-$ nest g service users
+$ nest g service <service_name>
+
+# generate resource (equal to php artisan)
+$ nest g resource <resource_name>
 ```
 
 ## Test
