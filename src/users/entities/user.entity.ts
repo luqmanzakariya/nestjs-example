@@ -1,9 +1,12 @@
+import { Position } from 'src/auth/entities/positions.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 
 export enum Gender {
@@ -106,11 +109,9 @@ export class User {
   })
   country_code: string;
 
-  @Column({
-    type: 'smallint',
-    default: 3,
-  })
-  position_id: number;
+  @OneToOne(() => Position)
+  @JoinColumn({ name: 'position_id' })
+  position_id: Position;
 
   @Column({
     type: 'enum',

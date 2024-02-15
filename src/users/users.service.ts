@@ -15,7 +15,11 @@ export class UsersService {
 
   // # Get all users
   async findAll(): Promise<User[]> {
-    return await this.usersRepository.find();
+    return await this.usersRepository.find({
+      relations: {
+        position_id: true,
+      },
+    });
   }
 
   // # Get all active users
