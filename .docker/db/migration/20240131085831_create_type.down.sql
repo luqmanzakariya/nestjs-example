@@ -1,0 +1,14 @@
+DROP TYPE IF EXISTS public.status;
+DROP TYPE IF EXISTS public.notifications_type;
+DROP TYPE IF EXISTS public.notifications_status;
+DROP TYPE IF EXISTS public.reasons_reason_type;
+DROP TYPE IF EXISTS public.posts_media_type;
+DROP TYPE IF EXISTS public.posts_type;
+DROP TYPE IF EXISTS public.medias_type;
+DROP TYPE IF EXISTS public.admins_status;
+DROP TYPE IF EXISTS public.memberships_type;
+DROP TYPE IF EXISTS public.memberships_status;
+DROP TYPE IF EXISTS public.payments_provider;
+DROP TYPE IF EXISTS public.payments_status;
+DROP TYPE IF EXISTS public.qris_payments_status;
+DROP TYPE IF EXISTS public.orders_status;

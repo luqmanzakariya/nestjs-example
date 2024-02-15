@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS public.notifications_snapshot_version;
